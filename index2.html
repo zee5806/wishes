@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HAPPY RETURNS OF THE DAY ❤️</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,Helvetica,sans-serif;
+}
+
+body{
+overflow:hidden;
+background:linear-gradient(135deg,#ff9a9e,#fad0c4,#fad0c4,#fbc2eb);
+height:100vh;
+}
+
+.page{
+position:absolute;
+width:100%;
+height:100%;
+display:none;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:20px;
+animation:fade .7s;
+}
+
+.page.active{
+display:flex;
+}
+
+.container{
+background:rgba(255,255,255,.2);
+backdrop-filter:blur(12px);
+padding:30px;
+border-radius:20px;
+max-width:650px;
+width:95%;
+box-shadow:0 0 25px rgba(0,0,0,.25);
+}
+
+h1{
+font-size:3em;
+color:white;
+margin-bottom:15px;
+}
+
+h2{
+color:white;
+margin-bottom:25px;
+font-size:2em;
+}
+
+p{
+color:white;
+font-size:1.2em;
+line-height:1.7;
+margin-bottom:25px;
+}
+
+.btn{
+display:inline-block;
+padding:14px 28px;
+background:white;
+color:#ff4081;
+font-size:18px;
+font-weight:bold;
+border-radius:40px;
+text-decoration:none;
+transition:.3s;
+margin:10px;
+}
+
+.btn:hover{
+background:#ff4081;
+color:white;
+transform:scale(1.05);
+}
+
+.option{
+display:block;
+margin:15px auto;
+padding:15px;
+background:white;
+color:#ff4081;
+text-decoration:none;
+border-radius:50px;
+font-size:18px;
+font-weight:bold;
+max-width:350px;
+transition:.3s;
+}
+
+.option:hover{
+background:#ff4081;
+color:white;
+transform:scale(1.05);
+}
+
+canvas{
+position:fixed;
+top:0;
+left:0;
+pointer-events:none;
+}
+
+@keyframes fade{
+from{
+opacity:0;
+transform:scale(.95);
+}
+to{
+opacity:1;
+transform:scale(1);
+}
+}
+
+@media(max-width:768px){
+
+h1{
+font-size:2.2em;
+}
+
+h2{
+font-size:1.7em;
+}
+
+p{
+font-size:1.05em;
+}
+
+.option{
+font-size:17px;
+}
+
+.btn{
+font-size:17px;
+}
+
+}
+</style>
+</head>
+<body>
+
+<canvas id="confetti"></canvas>
+
+<!-- PAGE 1 -->
+
+<div class="page active" id="page1">
+
+<div class="container">
+
+<h1>🎂 Happy Birthday 🎂</h1>
+
+<p>
+Today is all about YOU MANAL! ❤️<br><br>
+May your life always be filled with happiness, good health, success and endless smiles. May this year bring you countless blessings, beautiful memories, endless laughter May all your dreams come true. 🎉
+</p>
+
+<a href="#" class="btn" onclick="showPage(2)">
+Open Your Surprise 🎁
+</a>
+
+</div>
+
+</div>
+
+<!-- PAGE 2 -->
+
+<div class="page" id="page2">
+
+<div class="container">
+
+<h2>Question 1 ❤️</h2>
+
+<p>Which one describes today?</p>
+
+<a href="#" class="option" onclick="showPage(3)">🎉 The Best Day Ever</a>
+
+<a href="#" class="option" onclick="showPage(3)">🥳 Full of Happiness</a>
+
+<a href="#" class="option" onclick="showPage(3)">✨ A Beautiful Beginning</a>
+
+</div>
+
+</div>
+
+<!-- PAGE 3 -->
+
+<div class="page" id="page3">
+
+<div class="container">
+
+<h2>Question 2 ❤️</h2>
+
+<p>Choose your birthday wish.</p>
+
+<a href="#" class="option" onclick="showPage(4)">🌹 Endless Happiness</a>
+
+<a href="#" class="option" onclick="showPage(4)">⭐ Success in Everything</a>
+
+<a href="#" class="option" onclick="showPage(4)">💖 Peace & Love</a>
+
+</div>
+
+</div>
+
+<!-- PAGE 4 -->
+
+<div class="page" id="page4">
+
+<div class="container">
+
+<h1>🎊 Once Again 🎊</h1>
+
+<p>
+
+I don't know this wish might not be special to you, but I know one thing that it will leave deep remarks Or impression on your heart❤️. For you : کہانی تمہاری ہے ہوسکے کمال لکھنا These days are not the same as they were last year But one thing has not changed:I still wait for your birthday just to wish you, and I am just as excited for it as I were defore. ہنسی تمہاری عادت بن جائے غم سبھی تم سے دور رہ جائے May Allah make your destiny as beautiful as you are. May Allah bless you with a future as beautiful as your heart.
+
+<br><br>
+
+❤️ Happy Birthday ❤️
+
+</p>
+
+<a href="#" class="btn" onclick="showPage(1)">
+🎉 Celebrate Again
+</a>
+
+</div>
+
+</div>
+
+<script>
+
+function showPage(num){
+
+document.querySelectorAll(".page").forEach(page=>{
+page.classList.remove("active");
+});
+
+document.getElementById("page"+num).classList.add("active");
+
+}
+
+const canvas=document.getElementById("confetti");
+const ctx=canvas.getContext("2d");
+
+function resize(){
+canvas.width=window.innerWidth;
+canvas.height=window.innerHeight;
+}
+
+resize();
+window.addEventListener("resize",resize);
+
+const pieces=[];
+
+for(let i=0;i<180;i++){
+
+pieces.push({
+
+x:Math.random()*canvas.width,
+y:Math.random()*canvas.height,
+
+r:Math.random()*6+3,
+
+d:Math.random()*180,
+
+color:`hsl(${Math.random()*360},100%,50%)`,
+
+tilt:Math.random()*10,
+
+speed:Math.random()*3+2
+
+});
+
+}
+
+function draw(){
+
+ctx.clearRect(0,0,canvas.width,canvas.height);
+
+pieces.forEach(p=>{
+
+ctx.beginPath();
+
+ctx.fillStyle=p.color;
+
+ctx.fillRect(p.x,p.y,p.r,p.r*2);
+
+});
+
+update();
+
+requestAnimationFrame(draw);
+
+}
+
+function update(){
+
+pieces.forEach(p=>{
+
+p.y+=p.speed;
+
+p.x+=Math.sin(p.d);
+
+p.d+=0.05;
+
+if(p.y>canvas.height){
+
+p.y=-20;
+
+p.x=Math.random()*canvas.width;
+
+}
+
+});
+
+}
+
+draw();
+
+</script>
+
+</body>
+</html>
